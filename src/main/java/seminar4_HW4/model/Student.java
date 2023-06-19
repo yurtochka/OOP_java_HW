@@ -24,6 +24,6 @@ public class Student extends User implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return String.format("%s\t%s\t%s\t%s", getId(), getFullName(), getAge(), getPhoneNumber());
+        return String.format("Student: %s\t%s\t%s\t%s", getId(), getFullName(), getAge(), getPhoneNumber());
     }
 }
