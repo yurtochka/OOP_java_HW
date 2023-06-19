@@ -6,9 +6,9 @@ import seminar4_HW4.service.UserService;
 
 import java.util.List;
 
-public class StudentController implements UserController<Student>{
+public class StudentController implements UserController<Student> {
 
-    public UserService<Student> studentService;
+    public StudentService studentService;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -18,6 +18,11 @@ public class StudentController implements UserController<Student>{
     @Override
     public void create(String fullName, Integer age, String phoneNumber) {
         studentService.create(fullName, age, phoneNumber);
+    }
+
+    @Override
+    public void editUser(String fullName, Integer age, String phoneNumber) {
+        studentService.editUser(fullName, age, phoneNumber);
     }
 
     @Override
@@ -31,6 +36,11 @@ public class StudentController implements UserController<Student>{
     }
 
     @Override
+    public List<Student> getAllSortUsersByAge() {
+        return studentService.getAllSortUsersByAge();
+    }
+
+    @Override
     public boolean removeUser(String fullName) {
         studentService.removeUser(fullName);
         return true;
@@ -40,9 +50,5 @@ public class StudentController implements UserController<Student>{
     public List<Student> getAll() {
         return studentService.getAll();
     }
-    
-    @Override
-    public List<Student> getAllSortUsersByAge(){
-        return studentService.getAllSortUsersByAge();
-    }
+
 }

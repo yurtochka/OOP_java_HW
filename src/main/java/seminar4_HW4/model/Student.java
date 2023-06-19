@@ -22,6 +22,7 @@ public class Student extends User implements Comparable<Student> {
         return getFullName().compareTo(o.getFullName());
     }
 
+    @Override
     public String toString() {
         return String.format("%s\t%s\t%s\t%s", getId(), getFullName(), getAge(), getPhoneNumber());
     }

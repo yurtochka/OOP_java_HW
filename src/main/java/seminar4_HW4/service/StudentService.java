@@ -1,5 +1,6 @@
 package seminar4_HW4.service;
 
+
 import seminar4_HW4.model.Student;
 import seminar4_HW4.model.User;
 import seminar4_HW4.repository.StudentRepository;
@@ -8,6 +9,7 @@ import seminar4_HW4.repository.UserRepository;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 public class StudentService implements UserService<Student> {
     private final UserRepository<Student> studentRepository;
@@ -55,7 +57,6 @@ public class StudentService implements UserService<Student> {
         });*/
 //        students.sort((o1, o2) -> o1.getAge().compareTo(o2.getAge()));
         students.sort(Comparator.comparing(User::getAge));
-
         return students;
     }
 
@@ -72,5 +73,19 @@ public class StudentService implements UserService<Student> {
     @Override
     public void removeUser(String fullName) {
         studentRepository.remove(fullName);
+    }
+
+    @Override
+    public void editUser(String fullName, Integer age, String phoneNumber) {
+        for (Student student : studentRepository.getAll()) {
+            if (student.getFullName().equals(fullName)) {
+                System.out.println("Найдена запись: " + fullName);
+                studentRepository.remove(fullName);
+                Student editT = new Student(student.getId(), fullName, age, phoneNumber);
+                studentRepository.add(editT);
+                return;
+            }
+        }
+        System.out.println("Запись " + fullName + " не найдена!");
     }
 }

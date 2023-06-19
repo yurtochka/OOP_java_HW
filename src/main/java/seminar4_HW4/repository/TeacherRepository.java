@@ -1,5 +1,6 @@
 package seminar4_HW4.repository;
 
+import seminar4_HW4.model.Student;
 import seminar4_HW4.model.Teacher;
 
 import java.util.ArrayList;
@@ -18,13 +19,13 @@ public class TeacherRepository implements UserRepository<Teacher> {
     }
 
     @Override
-    public void add(Teacher student) {
-        teachers.add(student);
+    public void add(Teacher teacher) {
+        teachers.add(teacher);
     }
 
     @Override
     public void remove(String fullName) {
-        for (Teacher teacher: teachers) {
+        for (Teacher teacher : teachers) {
             if (teacher.getFullName().equals(fullName)) {
                 teachers.remove(teacher);
                 return;

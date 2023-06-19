@@ -1,6 +1,6 @@
 package seminar4_HW4.service;
 
-import lombok.Data;
+
 import seminar4_HW4.model.Student;
 import seminar4_HW4.model.Teacher;
 import seminar4_HW4.model.User;
@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Data
 public class TeacherService implements UserService<Teacher> {
     public final TeacherRepository teacherRepository;
 
@@ -65,4 +64,19 @@ public class TeacherService implements UserService<Teacher> {
     public void removeUser(String fullName) {
         teacherRepository.remove(fullName);
     }
+
+    @Override
+    public void editUser(String fullName, Integer age, String phoneNumber) {
+        for (Teacher teacher : teacherRepository.getAll()) {
+            if (teacher.getFullName().equals(fullName)) {
+                System.out.println("Найдена запись: " + fullName);
+                teacherRepository.remove(fullName);
+                Teacher editT = new Teacher(teacher.getId(), fullName, age, phoneNumber);
+                teacherRepository.add(editT);
+                return;
+            }
+        }
+        System.out.println("Запись " + fullName + " не найдена!");
+    }
+
 }

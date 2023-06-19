@@ -1,7 +1,6 @@
 package seminar4_HW4.repository;
 
 import seminar4_HW4.model.Student;
-import seminar4_HW4.model.Teacher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +12,10 @@ public class StudentRepository implements UserRepository<Student> {
         this.students = new ArrayList<>();
     }
 
-
     @Override
-    public List<Teacher> getAll() { return null; }
+    public List<Student> getAll() {
+        return students;
+    }
 
     @Override
     public void add(Student student) {

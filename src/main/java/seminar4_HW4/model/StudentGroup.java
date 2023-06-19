@@ -24,9 +24,4 @@ public class StudentGroup implements Iterable<Student> {
     }
 
 
-    public void addStudent(Student student) {
-        studentsList.add(student);
-    }
-
-
 }

@@ -22,11 +22,4 @@ public class TeacherGroup implements Iterable<Teacher> {
     public Iterator<Teacher> iterator() {
         return new TeacherGroupIterator(teachersList);
     }
-
-
-    public void addTeacher(Teacher teacher) {
-        teachersList.add(teacher);
-    }
-
-
 }
